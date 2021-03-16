@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserInputDTO } from "../business/entities/User";
+import { UserInputDTO, LoginInputDTO } from "../business/entities/User";
 import { TokenManager } from "../services/TokenManager";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator"
@@ -37,6 +37,25 @@ export class UserController {
       }
    }
 
-   //login
+   async login(req: Request, res: Response) {
+
+      try {
+
+         const loginData: LoginInputDTO = {
+            nickname: req.body.nickname,
+            password: req.body.password
+         };
+
+         const token = await userBusiness.getUserByNickname(loginData);
+
+         res.status(200).send({ token });
+
+      } catch (error) {
+         res
+            .status(error.statusCode || 400)
+            .send({ error: error.message });
+      }
+   }
+
 
 }
