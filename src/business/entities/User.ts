@@ -25,6 +25,10 @@ export class User {
     
  }
 
+ export interface LoginInputDTO {
+    nickname: string;
+    password: string;
+ }
 
 export interface UserInputDTO {
     name: string;

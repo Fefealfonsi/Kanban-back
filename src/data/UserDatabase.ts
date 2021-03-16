@@ -38,5 +38,18 @@ export class UserDatabase extends BaseDatabase {
       }
    }
 
-  //login
+   public async getUserByNickname(nickname: string): Promise<User> {
+    try {
+       const result = await BaseDatabase.connection.raw(`
+       SELECT * FROM ${UserDatabase.TABLE_NAME}
+       WHERE nickname = "${nickname}";
+       `)
+         
+       return UserDatabase.toUserModel(result[0][0]);
+    } catch (error) {
+       
+       throw new CustomError(500, "An unexpected error ocurred ");
+    }
+ }
+
 }

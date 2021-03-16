@@ -10,3 +10,11 @@ Content-Type: application/json
     
 }
 
+### login
+POST   http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "nickname": "letscode",
+    "password": "lets@123"
+}
