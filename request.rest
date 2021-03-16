@@ -1,0 +1,12 @@
+### signup
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Fernanda",
+    "nickname": "letscode",
+    "email": "letscode@gmail.com",
+   	"password": "lets@123"
+    
+}
+
