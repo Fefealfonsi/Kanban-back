@@ -40,4 +40,5 @@ export interface UserInputDTO {
 
 export interface AuthenticationData {
     id: string;
+    nickname:string;
  }

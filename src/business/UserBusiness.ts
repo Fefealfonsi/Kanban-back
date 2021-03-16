@@ -30,6 +30,8 @@ export class UserBusiness {
 
     const hashPassword = await this.hashManager.hash(user.password);
 
+    const nickname = user.nickname as string
+
     await this.userDatabase.createUser(
       id,
       user.name,
@@ -39,11 +41,11 @@ export class UserBusiness {
     );
 
     const accessToken = this.tokenManager.generateToken({
-      id,
+      id, nickname,
     });
 
     if (!accessToken) {
-      throw new CustomError(417, "No token found");
+      throw new CustomError(404, "No token found");
     }
 
     return accessToken;
@@ -67,6 +69,7 @@ export class UserBusiness {
 
     const accessToken = this.tokenManager.generateToken({
       id: userFromDB.id,
+      nickname:userFromDB.nickname
     });
 
     return accessToken;
