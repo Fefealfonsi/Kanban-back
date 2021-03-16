@@ -18,3 +18,13 @@ Content-Type: application/json
     "nickname": "letscode",
     "password": "lets@123"
 }
+
+### Create Card
+POST http://localhost:3003/card/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImEwNTFjMzUwLWY4YjgtNGFhMi1hNWMwLWQzMTdhYjI4OTVmYSIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5MjUzNzcsImV4cCI6MTYxNjAxMTc3N30.-RbDL1qIje3HBFB2ZxwckM0qp1HTRcMf93ka7yAmgWM
+
+{
+    "subtitle":"criar outro card",
+    "content":"Testando a criação de outro card"
+}

@@ -30,6 +30,7 @@ export class TokenManager {
 
       const result = {
          id: payload.id,
+         nickname:payload.nickname
     
       };
 
