@@ -3,13 +3,15 @@ import { IdGenerator } from "../services/IdGenerator";
 import { TokenManager } from "../services/TokenManager";
 import { CustomError } from "./error/CustomError";
 import { CardInputDTO, CardUpdateDTO,CardDeleteDTO } from "./entities/Card";
-// import { stringify } from "uuid";
+import { ChangeManager } from "../services/ChangeManager";
+
 
 export class CardBusiness {
   constructor(
     private idGenerator: IdGenerator,
     private tokenManager: TokenManager,
-    private cardDatabase: CardDatabase
+    private cardDatabase: CardDatabase,
+    private changeManager: ChangeManager
   ) {}
 
   async createCard(card: CardInputDTO, token: string) {
@@ -26,22 +28,43 @@ export class CardBusiness {
 
       const id = this.idGenerator.generate();
 
-      await this.cardDatabase.createCard(
+      const result = await this.cardDatabase.createCard(
         id,
         author.id,
         card.subtitle,
         card.content
       );
 
-      return id;
+      return result;
     } catch (error) {
       throw new CustomError(error.statusCode || 400, error.message);
     }
   }
 
+  async getCard(token: string) {
+   try {
+
+      
+     if (!token) {
+       throw new CustomError(401, "Unauthorized");
+     }
+
+     this.tokenManager.getData(token);
+
+     const result = await this.cardDatabase.getCard();
+
+     return result;
+
+   } catch (error) {
+     throw new CustomError(error.statusCode || 400, error.message);
+   }
+ }
+
   async updateCard(card: CardUpdateDTO, token: string) {
     try {
-      console.log("CARD-ID", card.id);
+
+     
+
 
       if (!card.subtitle || !card.content) {
         throw new CustomError(400, "invalid input to update Card");
@@ -55,9 +78,13 @@ export class CardBusiness {
         throw new CustomError(401, "Unauthorized");
       }
 
+
       this.tokenManager.getData(token);
 
       await this.cardDatabase.updateCard(card.id, card.subtitle, card.content);
+
+      this.changeManager.impressChange(card.id, "Alterado");
+
     } catch (error) {
       throw new CustomError(error.statusCode || 400, error.message);
     }
@@ -76,9 +103,13 @@ export class CardBusiness {
 
       this.tokenManager.getData(token);
 
-      const getAllcards = await this.cardDatabase.deleteCard(card.id);
+      this.changeManager.impressChange(card.id, "Removido");
 
-      return getAllcards
+      const result = await this.cardDatabase.deleteCard(card.id);
+
+      
+
+      return result
 
     } catch (error) {
       throw new CustomError(error.statusCode || 400, error.message);
