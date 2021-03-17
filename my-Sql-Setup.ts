@@ -20,7 +20,7 @@ export class MySqlSetup extends BaseDatabase{
                 author VARCHAR(255) NOT NULL ,
                 subtitle VARCHAR(255) NOT NULL,
                 content TEXT NOT NULL,
-                list ENUM ('ToDo', 'Doing', 'Done' ) DEFAULT "To Do",
+                list ENUM ('ToDo', 'Doing', 'Done' ) DEFAULT "ToDo",
                 FOREIGN KEY (author) REFERENCES USER_KANBAN(id)
             )
         `)

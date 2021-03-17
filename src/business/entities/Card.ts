@@ -40,6 +40,7 @@ export interface CardInputDTO {
 }
 export interface CardDeleteDTO {
    id:string,
+  
     
 }
 

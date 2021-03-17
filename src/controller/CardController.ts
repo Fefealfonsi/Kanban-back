@@ -4,6 +4,7 @@ import { TokenManager } from "../services/TokenManager";
 import { IdGenerator } from "../services/IdGenerator";
 import { CardBusiness } from "../business/CardBusiness";
 import { CardDatabase } from "../data/CardDatabase";
+import { ChangeManager } from "../services/ChangeManager";
 // import dayjs from 'dayjs';
 
 // var customParseFormat = require('dayjs/plugin/customParseFormat')
@@ -12,11 +13,12 @@ import { CardDatabase } from "../data/CardDatabase";
 const cardBusiness = new CardBusiness(
   new IdGenerator(),
   new TokenManager(),
-  new CardDatabase()
+  new CardDatabase(),
+  new ChangeManager()
 );
 
 export class CardController {
-  async create(req: Request, res: Response) {
+  async createCard(req: Request, res: Response) {
     try {
       const input: CardInputDTO = {
         subtitle: req.body.subtitle,
@@ -25,17 +27,29 @@ export class CardController {
 
       const token = req.headers.authorization as any;
 
-      const id = await cardBusiness.createCard(input, token);
+      const result = await cardBusiness.createCard(input, token);
 
-      res.status(200).send({ id, input });
+      res.status(200).send({ result});
     } catch (error) {
       res.status(error.statusCode || 400).send({ error: error.message });
     }
   }
+  async getCard(req: Request, res: Response) {
+   try {
+   
+     const token = req.headers.authorization as any;
 
-  async update(req: Request, res: Response) {
+     const result = await cardBusiness.getCard(token);
+
+     res.status(200).send({ result });
+   } catch (error) {
+     res.status(error.statusCode || 400).send({ error: error.message });
+   }
+ }
+
+  async updateCard(req: Request, res: Response) {
     try {
-      //  let editDate = dayjs(req.body.date, 'DD/MM/YYYY').format('YYYY/MM/DD')
+   
 
       const input: CardUpdateDTO = {
         id: req.params.id,
@@ -53,7 +67,7 @@ export class CardController {
     }
   }
 
-  async delete(req: Request, res: Response) {
+  async deleteCard(req: Request, res: Response) {
     try {
       //  let editDate = dayjs(req.body.date, 'DD/MM/YYYY').format('YYYY/MM/DD')
 
@@ -63,9 +77,9 @@ export class CardController {
 
       const token = req.headers.authorization as any;
 
-      const allCards = await cardBusiness.deleteCard(input, token);
+      const result = await cardBusiness.deleteCard(input, token);
 
-      res.status(200).send({ allCards });
+      res.status(200).send({ result });
     } catch (error) {
       res.status(error.statusCode || 400).send({ error: error.message });
     }

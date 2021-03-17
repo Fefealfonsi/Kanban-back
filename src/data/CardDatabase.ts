@@ -22,6 +22,16 @@ export class CardDatabase extends BaseDatabase {
          )
         
          `);
+
+         const result = await BaseDatabase.connection.raw(`
+         SELECT * 
+         FROM ${CardDatabase.TABLE_NAME}
+         WHERE id = "${id}";
+         `);
+
+         return (result[0])
+
+
     } catch (error) {
       console.log(error);
       throw new CustomError(
@@ -30,6 +40,23 @@ export class CardDatabase extends BaseDatabase {
       );
     }
   }
+  public async getCard( ): Promise<void> {
+   try {
+      const result = await BaseDatabase.connection.raw(`
+      SELECT * 
+      FROM ${CardDatabase.TABLE_NAME};
+      `);
+
+      return (result[0])
+   
+   } catch (error) {
+     console.log(error);
+     throw new CustomError(
+       500,
+       "An unexpected error ocurred in CardDatabase "
+     );
+   }
+ }
 
   public async updateCard(
     id: string,

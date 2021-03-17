@@ -1,17 +1,26 @@
 import express, {Express} from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net";
-import { userRouter } from "./controller/router/userRouter";
-import { cardRouter } from "./controller/router/cardRouter";
+import { UserController } from "./controller/UserController";
+import { CardController } from "./controller/CardController";
+
+
+const userController = new UserController();
+const cardController = new CardController();
+
 const app: Express = express();
 
 app.use(express.json());
 app.use(cors());
 
+app.post("/signup", userController.signup);
+app.post("/login", userController.login);
 
-app.use("/user", userRouter)
+app.get("/cards", cardController.getCard)
+app.post("/cards", cardController.createCard);
+app.put("/cards/:id", cardController.updateCard);
+app.delete("/cards/:id", cardController.deleteCard);
 
-app.use("/card", cardRouter)
 
 const server = app.listen(process.env.PORT || 5000, () => {
     if (server) {
