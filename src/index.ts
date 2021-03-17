@@ -13,7 +13,7 @@ app.use("/user", userRouter)
 
 app.use("/card", cardRouter)
 
-const server = app.listen(process.env.PORT || 3003, () => {
+const server = app.listen(process.env.PORT || 5000, () => {
     if (server) {
        const address = server.address() as AddressInfo;
        console.log(`Server is running in http://localhost: ${address.port}`);

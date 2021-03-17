@@ -1,5 +1,5 @@
 ### signup
-POST http://localhost:3003/user/signup
+POST http://localhost:5000/user/signup
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### login
-POST   http://localhost:3003/user/login
+POST   http://localhost:5000/user/login
 Content-Type: application/json
 
 {
@@ -20,11 +20,26 @@ Content-Type: application/json
 }
 
 ### Create Card
-POST http://localhost:3003/card/create
+POST http://localhost:5000/card/create
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImEwNTFjMzUwLWY4YjgtNGFhMi1hNWMwLWQzMTdhYjI4OTVmYSIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5MjUzNzcsImV4cCI6MTYxNjAxMTc3N30.-RbDL1qIje3HBFB2ZxwckM0qp1HTRcMf93ka7yAmgWM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiMzJmZWY2LTdkZjgtNDQyMi04YmU3LWFlNmY2ZjQ0MzY2MyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5NDUxMDgsImV4cCI6MTYxNjAzMTUwOH0.Q2Ls0drhQ5CdIG4xoaVDvh1dDs4Ndb9q0tFd4e0ci_E
 
 {
-    "subtitle":"criar outro card",
+    "subtitle":"",
     "content":"Testando a criação de outro card"
 }
+
+### Update Card
+PUT  http://localhost:5000/card/update/9eec27ec-8589-4567-a234-7ce1a977e3fe
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiMzJmZWY2LTdkZjgtNDQyMi04YmU3LWFlNmY2ZjQ0MzY2MyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5NDg3NDQsImV4cCI6MTYxNjAzNTE0NH0.6106lEtdqmi3IHctvGE8k5AuTHjntWptTvCh42bG57U
+
+{
+    "subtitle":" criando 2º card",
+    "content":"Testando a alteração de 2º card"
+}
+
+### Delete Card
+DELETE   http://localhost:5000/card/delete/9063ffa2-dd79-4007-a28c-b3cb241218eb
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRiMzJmZWY2LTdkZjgtNDQyMi04YmU3LWFlNmY2ZjQ0MzY2MyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5NDg3NDQsImV4cCI6MTYxNjAzNTE0NH0.6106lEtdqmi3IHctvGE8k5AuTHjntWptTvCh42bG57U

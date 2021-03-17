@@ -32,6 +32,16 @@ export interface CardInputDTO {
    
  }
 
+ export interface CardUpdateDTO {
+   id:string,
+   subtitle: string,
+   content: string,
+  
+}
+export interface CardDeleteDTO {
+   id:string,
+    
+}
 
  export interface toCardModel {
    id:string,
