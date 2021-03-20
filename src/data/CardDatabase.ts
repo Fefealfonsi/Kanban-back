@@ -100,4 +100,24 @@ export class CardDatabase extends BaseDatabase {
       );
     }
   }
+
+  public async updateList(
+    id: string,
+    list: string,
+   
+  ): Promise<void> {
+    try {
+      await BaseDatabase.connection.raw(`UPDATE ${CardDatabase.TABLE_NAME}
+       SET list = "${list}"
+       WHERE id = "${id}";
+      
+       `);
+    } catch (error) {
+      console.log(error);
+      throw new CustomError(
+        500,
+        "Accepted list values are 'ToDo', 'Doing' and 'Done'. "
+      );
+    }
+  }
 }

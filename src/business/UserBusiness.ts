@@ -61,7 +61,7 @@ export class UserBusiness {
   
       const userFromDB = await this.userDatabase.getUserByNickname(user.nickname);
 
-       process.env.LOGIN = userFromDB.nickname
+       process.env.LOGIN = userFromDB.nickname 
        process.env.PASSWORD = userFromDB.password
 
        console.log(process.env.LOGIN)
