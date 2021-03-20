@@ -52,3 +52,8 @@ export interface CardDeleteDTO {
    list:string,
    
 }
+
+export interface ListUpdateDTO {
+   id:string,
+   list: string,
+}

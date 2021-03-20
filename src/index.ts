@@ -5,8 +5,10 @@ import { UserController } from "./controller/UserController";
 import { CardController } from "./controller/CardController";
 
 
+
 const userController = new UserController();
 const cardController = new CardController();
+
 
 const app: Express = express();
 
@@ -20,7 +22,7 @@ app.get("/cards", cardController.getCard)
 app.post("/cards", cardController.createCard);
 app.put("/cards/:id", cardController.updateCard);
 app.delete("/cards/:id", cardController.deleteCard);
-
+app.put("/cards/list/:id", cardController.updateList);
 
 const server = app.listen(process.env.PORT || 5000, () => {
     if (server) {

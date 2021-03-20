@@ -2,7 +2,7 @@ import { CardDatabase } from "../data/CardDatabase";
 import { IdGenerator } from "../services/IdGenerator";
 import { TokenManager } from "../services/TokenManager";
 import { CustomError } from "./error/CustomError";
-import { CardInputDTO, CardUpdateDTO,CardDeleteDTO } from "./entities/Card";
+import { CardInputDTO, CardUpdateDTO,CardDeleteDTO, ListUpdateDTO } from "./entities/Card";
 import { ChangeManager } from "../services/ChangeManager";
 
 
@@ -110,6 +110,36 @@ export class CardBusiness {
       
 
       return result
+
+    } catch (error) {
+      throw new CustomError(error.statusCode || 400, error.message);
+    }
+  }
+
+  async updateList(card: ListUpdateDTO, token: string) {
+    try {
+
+      if (!card.list) {
+        throw new CustomError(404, "invalid input to update list");
+      }
+      // if (card.list !== "ToDo", "Doing", "Done"  ) {
+      //   throw new CustomError(400, "invalid input to update list");
+      // }
+
+      if (!card.id) {
+        throw new CustomError(404, "nonexistent id");
+      }
+
+      if (!token) {
+        throw new CustomError(401, "Unauthorized");
+      }
+
+
+      this.tokenManager.getData(token);
+
+      await this.cardDatabase.updateList(card.id, card.list);
+
+     
 
     } catch (error) {
       throw new CustomError(error.statusCode || 400, error.message);

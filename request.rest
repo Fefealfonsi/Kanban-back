@@ -22,31 +22,45 @@ Content-Type: application/json
 ### Create Card
 POST http://localhost:5000/cards
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5OTE2MDEsImV4cCI6MTYxNjA3ODAwMX0.-oNhI7sD2L5fSauaY1ePF8OFxrPiCKi6QiX645WsuVU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTYyNzExNTMsImV4cCI6MTYxNjM1NzU1M30.WMxkDusHLJDwxLVBQCqzwlOmQFbkLK0pg6o3Csf_58I
 
 {
-    "subtitle":"para remover",
-    "content":"Testando a criação do 1º card"
+    "subtitle":"para alterar o list",
+    "content":"Testando alteração de list"
 }
 
 ### Get Cards
 GET  http://localhost:5000/cards
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5OTE2MDEsImV4cCI6MTYxNjA3ODAwMX0.-oNhI7sD2L5fSauaY1ePF8OFxrPiCKi6QiX645WsuVU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTYyNzExNTMsImV4cCI6MTYxNjM1NzU1M30.WMxkDusHLJDwxLVBQCqzwlOmQFbkLK0pg6o3Csf_58I
 
 
 
 ### Update Card
-PUT  http://localhost:5000/cards/50d2dde1-ae09-4350-b777-ca4114d71597
+PUT  http://localhost:5000/cards/be33a913-041f-46f9-8d32-5608f88c8f5d
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5OTE2MDEsImV4cCI6MTYxNjA3ODAwMX0.-oNhI7sD2L5fSauaY1ePF8OFxrPiCKi6QiX645WsuVU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTYyNzExNTMsImV4cCI6MTYxNjM1NzU1M30.WMxkDusHLJDwxLVBQCqzwlOmQFbkLK0pg6o3Csf_58I
+
 
 {
-    "subtitle":"  1º card",
-    "content":"Alteração do 1º card"
+    "subtitle":"  Para testar a alteração de list",
+    "content":"Alterando o list"
 }
 
 ### Delete Card
-DELETE   http://localhost:5000/cards/50d2dde1-ae09-4350-b777-ca4114d71597
+DELETE   http://localhost:5000/cards/e0e2bbd9-e72a-4439-ae37-ae2c08e14fd1
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTU5OTE2MDEsImV4cCI6MTYxNjA3ODAwMX0.-oNhI7sD2L5fSauaY1ePF8OFxrPiCKi6QiX645WsuVU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTYxMjAwMTgsImV4cCI6MTYxNjIwNjQxOH0.cV_R8QERp3egiqT9ueAlnuw_DB_-XiSq8bHBL7AtWbc
+
+
+
+### Update Card
+PUT  http://localhost:5000/cards/list/be33a913-041f-46f9-8d32-5608f88c8f5d
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBiZGJkY2U4LWZhZGEtNDdmNy05ZmQ1LWNiOWE1OTg5ZDcwMyIsIm5pY2tuYW1lIjoibGV0c2NvZGUiLCJpYXQiOjE2MTYyNzExNTMsImV4cCI6MTYxNjM1NzU1M30.WMxkDusHLJDwxLVBQCqzwlOmQFbkLK0pg6o3Csf_58I
+
+
+{
+    "list":"Doing"
+    
+}

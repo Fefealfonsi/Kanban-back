@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CardInputDTO, CardUpdateDTO, CardDeleteDTO } from "../business/entities/Card";
+import { CardInputDTO, CardUpdateDTO, CardDeleteDTO,  ListUpdateDTO } from "../business/entities/Card";
 import { TokenManager } from "../services/TokenManager";
 import { IdGenerator } from "../services/IdGenerator";
 import { CardBusiness } from "../business/CardBusiness";
@@ -84,4 +84,24 @@ export class CardController {
       res.status(error.statusCode || 400).send({ error: error.message });
     }
   }
+
+  async updateList(req: Request, res: Response) {
+    try {
+   
+
+      const input: ListUpdateDTO = {
+        id: req.params.id,
+        list: req.body.list,
+      };
+
+      const token = req.headers.authorization as any;
+
+      await cardBusiness.updateList(input, token);
+
+      res.status(200).send({ input });
+    } catch (error) {
+      res.status(error.statusCode || 400).send({ error: error.message });
+    }
+  }
 }
+
