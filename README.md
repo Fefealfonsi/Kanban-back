@@ -1,6 +1,6 @@
 # Kanban-back
-#Projeto Kanban - backend.
-##Endpoints:
+# Projeto Kanban - backend.
+## Endpoints:
 1-) signup(este não estava nas especificações do projeto, porém achei importante incluí-lo)
 2-)login
 3-)createCard(Cria um cartão com título e conteúdo)
@@ -10,12 +10,12 @@
 7) updateList(atualiza o nome da lista em que o card deve estar)
 Obs:Este endpoint não estava específicado, porém o criei, pois foi a maneira que encontrei de finalizar o projeto.
 
-##Tecnologias utilizadas:
+## Tecnologias utilizadas:
 1-)typeScript
 2-)JavaScript
 3-)SQL
 
-##Bibliotecas utilizadas:
+## Bibliotecas utilizadas:
 1-) bcryptjs
 2-) cors
 3-)dayjs
